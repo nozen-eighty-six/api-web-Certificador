@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,12 @@ public class LineaPedidoImpl  implements LineaPedidoService{
             e.printStackTrace();
             return false;
         }
+	}
+
+	@Override
+	public List<LineaPedido> obtenerLineaPedidoByPedidoId(String id) {
+		// TODO Auto-generated method stub
+		return repository.obtenerLineaPedidoByPedidoId(id);
 	}
 
 }

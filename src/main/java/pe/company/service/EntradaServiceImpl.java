@@ -53,25 +53,25 @@ public class EntradaServiceImpl implements EntradaService {
 	@Override
 	public List<Entrada> obtenerPrimerosEntradas15() {
 		// TODO Auto-generated method stub
-		return repository.obtenerPrimerosEntradas20();
+		return repository.obtenerPrimerosEntradas15();
 	}
 
 	@Override
 	public List<Entrada> obtenerPrimerosEntradas20() {
 		// TODO Auto-generated method stub
-		return repository.obtenerPrimerosEntradas25();
+		return repository.obtenerPrimerosEntradas20();
 	}
 
 	@Override
 	public List<Entrada> obtenerPrimerosEntradas25() {
 		// TODO Auto-generated method stub
-		return repository.obtenerPrimerosEntradas30();
+		return repository.obtenerPrimerosEntradas25();
 	}
 
 	@Override
 	public List<Entrada> obtenerPrimerosEntradas30() {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.obtenerPrimerosEntradas30();
 	}
 
 }

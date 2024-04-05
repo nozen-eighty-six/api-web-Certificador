@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -70,6 +71,14 @@ public class LineaPedidoController {
 
 	public LineaPedidoController() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> obtenerLineaPedidoByPedidoId(@PathVariable String id){
+		
+		List<LineaPedido> lineasPedido = lps.obtenerLineaPedidoByPedidoId(id);
+		
+		return new ResponseEntity<>(lineasPedido, HttpStatus.OK);
 	}
 	
 	@PostMapping("/save")

@@ -73,6 +73,9 @@ public class Producto  implements Serializable{
 	 @ManyToMany(mappedBy = "productos")
 	    private Set<LineaPedido> lineasPedido = new HashSet<>();
 	
+	@OneToMany(mappedBy = "producto")
+	private Collection<DetalleVenta> venta;
+	
 	/*
 	@ManyToOne
 	private Categoria categoria;*/

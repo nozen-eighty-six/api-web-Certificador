@@ -107,4 +107,70 @@ public class ProductoServiceImpl implements ProductoService {
 		
 	}
 
+	@Override
+	public List<Producto> obtenerProductosByNinio() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByNinio();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByHombre() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByHombre();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByMujer() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByMujer();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByBebes() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByBebes();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosBySport() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosBySport();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByAccesorio() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByAccesorio();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByCamisa() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByCamisa();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByPolo() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByPolo();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByGorra() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByGorra();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByCasaca() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByCasaca();
+	}
+
+	@Override
+	public List<Producto> obtenerProductosByZapatilla() {
+		// TODO Auto-generated method stub
+		return pr.obtenerProductosByZapatilla();
+	}
+
 }

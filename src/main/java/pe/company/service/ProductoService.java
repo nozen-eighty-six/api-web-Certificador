@@ -25,4 +25,18 @@ public interface ProductoService {
 	public abstract   List<Producto> obtenerProductosByProveedor(Integer id);
 	
 	public abstract void actualizarProductoEntrada(Integer idProducto, Integer cantidadProducto);
+	
+	List<Producto> obtenerProductosByNinio();
+	List<Producto> obtenerProductosByHombre();
+	List<Producto> obtenerProductosByMujer();
+	List<Producto> obtenerProductosByBebes();
+	List<Producto> obtenerProductosBySport();
+	List<Producto> obtenerProductosByAccesorio();
+	List<Producto> obtenerProductosByCamisa();
+	List<Producto> obtenerProductosByPolo();
+	List<Producto> obtenerProductosByGorra();
+	List<Producto> obtenerProductosByCasaca();
+	List<Producto> obtenerProductosByZapatilla();
+
+
 }

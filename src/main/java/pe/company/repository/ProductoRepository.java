@@ -30,5 +30,45 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen ,p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id  from productos as p inner join productos_items_proveedor as ipp on p.id = ipp.items_producto_id where ipp.items_proveedor_id = :id")
     List<Producto> obtenerProductosByProveedor(@Param("id") Integer id);
 	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = 'Niño';")
+	List<Producto> obtenerProductosByNinio();
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion ,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id  from productos as p inner join\n"
+			+ "	categorias as c ON p.categoria_id = c.id where c.nombre = 'Hombre' LIMIT 6 OFFSET 26;")
+	List<Producto> obtenerProductosByHombre();
+	
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion ,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id  from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = 'Mujer' LIMIT 6 OFFSET 4;")
+	List<Producto> obtenerProductosByMujer();
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = 'Bebes';")
+	List<Producto> obtenerProductosByBebes();
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = 'Sport';")
+	List<Producto> obtenerProductosBySport();
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = 'Accesorios';")
+	List<Producto> obtenerProductosByAccesorio();
+	
+	
+	@Query(nativeQuery = true, value = "select * from productos where (nombre like 'CAMISA%' or nombre like '%CAMISA%') AND categoria_id <> 4;")
+	List<Producto> obtenerProductosByCamisa();
+	
+	@Query(nativeQuery = true, value = "select * from productos where nombre like 'POLO%' LIMIT 6;")
+	List<Producto> obtenerProductosByPolo();
+	
+	
+	@Query(nativeQuery = true, value = "select * from productos where nombre like 'GORRA%'")
+	List<Producto> obtenerProductosByGorra();
+	
+	@Query(nativeQuery = true, value = "select * from productos where nombre like 'POLO%' LIMIT 6;")
+	List<Producto> obtenerProductosByCasaca();
+	
+	@Query(nativeQuery = true, value = "select * from productos where nombre like 'ZAPATILLA%';\n")
+	List<Producto> obtenerProductosByZapatilla();
 
 }

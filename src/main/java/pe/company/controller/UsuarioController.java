@@ -1,5 +1,6 @@
 package pe.company.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +18,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pe.company.model.Orden;
 import pe.company.model.Usuario;
 import pe.company.service.OrdenService;
 import pe.company.service.UsuarioService;
 
-@Controller
+@RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
@@ -42,14 +49,18 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Usuario usuario) {
-		log.info("Usuario registro: {}", usuario);
+	public ResponseEntity<?> save(@RequestPart(name = "usuario") String usuarioJson) throws IOException {
+		log.info("Usuario registro: {}", usuarioJson);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		Usuario usuario =objectMapper.readValue(usuarioJson,Usuario.class);
 		//Asignamos el tipo de usuario
 		usuario.setTipo("USER");
 		//Encriptamos la clave del usuario
 		usuario.setPassword(passEnconder.encode(usuario.getPassword()));
 		us.save(usuario);
-		return "redirect:/";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/login")

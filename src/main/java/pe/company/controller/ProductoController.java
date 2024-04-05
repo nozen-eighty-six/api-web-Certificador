@@ -58,6 +58,8 @@ public class ProductoController {
 
 	@Autowired
 	private UploadFileService ups;
+	
+
 
 	@GetMapping("/listar")
 	public ResponseEntity<?> show() {
@@ -72,7 +74,7 @@ public class ProductoController {
 		}
 
 	}
-	
+
 	@GetMapping("/listar-siguientes-5")
 	public ResponseEntity<?> getProducts5() {
 		try {
@@ -86,7 +88,7 @@ public class ProductoController {
 		}
 
 	}
-	
+
 	@GetMapping("/listar-siguientes-10")
 	public ResponseEntity<?> getProductS10() {
 		try {
@@ -100,6 +102,7 @@ public class ProductoController {
 		}
 
 	}
+
 	@GetMapping("/listar-siguientes-15")
 	public ResponseEntity<?> getProductS15() {
 		try {
@@ -113,6 +116,7 @@ public class ProductoController {
 		}
 
 	}
+
 	@GetMapping("/listar-siguientes-20")
 	public ResponseEntity<?> getProductS20() {
 		try {
@@ -126,6 +130,7 @@ public class ProductoController {
 		}
 
 	}
+
 	@GetMapping("/listar-siguientes-25")
 	public ResponseEntity<?> getProductS25() {
 		try {
@@ -139,6 +144,7 @@ public class ProductoController {
 		}
 
 	}
+
 	@GetMapping("/listar-siguientes-30")
 	public ResponseEntity<?> getProductS30() {
 		try {
@@ -152,9 +158,9 @@ public class ProductoController {
 		}
 
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getProductsByProveedor(@PathVariable("id") Integer id){
+	public ResponseEntity<?> getProductsByProveedor(@PathVariable("id") Integer id) {
 		try {
 
 			// model.addAttribute("bProductos", prs.findAll());
@@ -247,8 +253,7 @@ public class ProductoController {
 	 * return "productos/edit"; }
 	 */
 
-	/*
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<?> getProducto(@PathVariable Integer id) {
 		try {
 
@@ -260,7 +265,7 @@ public class ProductoController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-*/
+
 	@PutMapping("/editar/{id}")
 	public ResponseEntity<?> edit(@PathVariable Integer id,
 			@RequestPart(name = "img", required = false) MultipartFile file,
@@ -289,7 +294,7 @@ public class ProductoController {
 			// model.addAttribute("producto", producto);
 
 			// Guardamos la imagen actual para compararla con las que tenemos
-			//|| "default.jpg".equals(file.getOriginalFilename())
+			// || "default.jpg".equals(file.getOriginalFilename())
 			if (file != null) {
 				// No se ha seleccionado un archivo nuevo, o se seleccionó el archivo
 				// predeterminado
@@ -300,8 +305,8 @@ public class ProductoController {
 				prs.update(productoEdit);
 			} else {
 				// Se ha seleccionado un nuevo archivo, realiza las operaciones necesarias
-				
-				//ups.deleteImage(producto.getImagen());
+
+				// ups.deleteImage(producto.getImagen());
 				productoEdit.setImagen(producto.getImagen());
 				prs.update(productoEdit);
 			}
@@ -350,7 +355,7 @@ public class ProductoController {
 
 		// Capturo el objeto
 		Producto p = new Producto();
-		if(!prs.get(id).isPresent()) {
+		if (!prs.get(id).isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		p = prs.get(id).get();
@@ -363,7 +368,6 @@ public class ProductoController {
 
 		prs.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
-		
 
 	}
 
@@ -373,4 +377,83 @@ public class ProductoController {
 		return "productos/show";
 	}
 
+	@GetMapping("/ninio")
+	public ResponseEntity<?> obtenerProductosByNinio() {
+
+		List<Producto> productosNinio = prs.obtenerProductosByNinio();
+
+		return new ResponseEntity<>(productosNinio, HttpStatus.OK);
+	};
+
+	@GetMapping("/hombre")
+	public ResponseEntity<?> obtenerProductosByHombre() {
+
+		List<Producto> productosHombre = prs.obtenerProductosByHombre();
+
+		return new ResponseEntity<>(productosHombre, HttpStatus.OK);
+	};
+
+	@GetMapping("/mujer")
+	public ResponseEntity<?> obtenerProductosByMujer() {
+		List<Producto> productosMujer = prs.obtenerProductosByMujer();
+
+		return new ResponseEntity<>(productosMujer, HttpStatus.OK);
+	};
+
+	@GetMapping("/bebes")
+	public ResponseEntity<?> obtenerProductosByBebes() {
+		List<Producto> productosBebe = prs.obtenerProductosByBebes();
+
+		return new ResponseEntity<>(productosBebe, HttpStatus.OK);
+
+	};
+
+	@GetMapping("/sport")
+	public ResponseEntity<?> obtenerProductosBySport() {
+		List<Producto> productosSport = prs.obtenerProductosBySport();
+
+		return new ResponseEntity<>(productosSport, HttpStatus.OK);
+	};
+
+	@GetMapping("/accesorios")
+	public ResponseEntity<?> obtenerProductosByAccesorio() {
+		List<Producto> productosAccesorio = prs.obtenerProductosByAccesorio();
+
+		return new ResponseEntity<>(productosAccesorio, HttpStatus.OK);
+	};
+
+	@GetMapping("/camisa")
+	public ResponseEntity<?> obtenerProductosByCamisa() {
+		List<Producto> productosCamisa = prs.obtenerProductosByCamisa();
+
+		return new ResponseEntity<>(productosCamisa, HttpStatus.OK);
+	};
+
+	@GetMapping("/polo")
+	public ResponseEntity<?> obtenerProductosByPolo() {
+		List<Producto> productosPolo = prs.obtenerProductosByPolo();
+
+		return new ResponseEntity<>(productosPolo, HttpStatus.OK);
+	};
+
+	@GetMapping("/gorra")
+	public ResponseEntity<?> obtenerProductosByGorra() {
+		List<Producto> productosGorra = prs.obtenerProductosByGorra();
+
+		return new ResponseEntity<>(productosGorra, HttpStatus.OK);
+	};
+
+	@GetMapping("/casaca")
+	public ResponseEntity<?> obtenerProductosByCasaca() {
+		List<Producto> productosCasaca = prs.obtenerProductosByCasaca();
+
+		return new ResponseEntity<>(productosCasaca, HttpStatus.OK);
+	};
+	
+	@GetMapping("/zapatilla")
+	public ResponseEntity<?> obtenerProductosByZapatilla() {
+		List<Producto> productosZapatilla = prs.obtenerProductosByZapatilla();
+
+		return new ResponseEntity<>(productosZapatilla, HttpStatus.OK);
+	};
 }

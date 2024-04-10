@@ -55,6 +55,37 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	List<Producto> obtenerProductosByAccesorio();
 	
 	
+	/*Url dinámicas
+	
+
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = :nombre")
+	List<Producto> obtenerProductosDinaByNinio(@Param("nombre") String nombre);
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion ,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id  from productos as p inner join\n"
+			+ "	categorias as c ON p.categoria_id = c.id where c.nombre = :nombre LIMIT 6 OFFSET 26;")
+	List<Producto> obtenerProductosDinaByHombre(@Param("nombre") String nombre);
+	
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion ,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id  from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = :nombre LIMIT 6 OFFSET 4;")
+	List<Producto> obtenerProductosDinaByMujer(@Param("nombre") String nombre);
+	
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = :nombre")
+	List<Producto> obtenerProductosDinaByBebes(@Param("nombre") String nombre);
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad,p.descripcion, p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = :nombre")
+	List<Producto> obtenerProductosDinaBySport(@Param("nombre") String nombre);
+	
+	@Query(nativeQuery = true, value = "select p.id, p.cantidad, p.descripcion,p.imagen, p.nombre, p.precio, p.categoria_id, p.marca_id, p.usuario_id from productos as p inner join categorias as c ON p.categoria_id = c.id where c.nombre = :nombre")
+	List<Producto> obtenerProductosDinaByAccesorio(@Param("nombre") String nombre);
+	
+	
+	*/
+	
+	
 	@Query(nativeQuery = true, value = "select * from productos where (nombre like 'CAMISA%' or nombre like '%CAMISA%') AND categoria_id <> 4;")
 	List<Producto> obtenerProductosByCamisa();
 	
@@ -65,7 +96,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	@Query(nativeQuery = true, value = "select * from productos where nombre like 'GORRA%'")
 	List<Producto> obtenerProductosByGorra();
 	
-	@Query(nativeQuery = true, value = "select * from productos where nombre like 'POLO%' LIMIT 6;")
+	@Query(nativeQuery = true, value = "select * from productos where nombre like 'CASACA%' LIMIT 6;")
 	List<Producto> obtenerProductosByCasaca();
 	
 	@Query(nativeQuery = true, value = "select * from productos where nombre like 'ZAPATILLA%';\n")

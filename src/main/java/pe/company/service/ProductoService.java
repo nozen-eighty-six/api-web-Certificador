@@ -37,6 +37,9 @@ public interface ProductoService {
 	List<Producto> obtenerProductosByGorra();
 	List<Producto> obtenerProductosByCasaca();
 	List<Producto> obtenerProductosByZapatilla();
+	
+	
+	/*Métodos dinámicos*/
 
 
 }

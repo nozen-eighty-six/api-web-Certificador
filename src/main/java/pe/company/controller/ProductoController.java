@@ -228,11 +228,19 @@ public class ProductoController {
 			producto.setImagen(nombreImagen);
 
 		}
+		else {
+			Producto productoFind = prs.get(producto.getId()).get();
+			ups.deleteImage(productoFind.getImagen());
+
+			String nombreImagen = ups.saveImage(file);
+			
+			Log.info("Guardando imagen del producto");
+			producto.setImagen(nombreImagen);
+		}
 
 		prs.save(producto);
 
 		return new ResponseEntity<>(HttpStatus.OK);
-		// return "redirect:/administrador/admin";
 	}
 	/*
 	 * @GetMapping("/editar/{id}") public String edit(@PathVariable Integer id,
